@@ -1,10 +1,11 @@
 #include <string.h>
+#include <stdbool.h>
 
 #include "code.h"
 
 #include "evaluate.c"
 
-void fill(code a, const char* str)
+bool fill(code a, const char* str)
 {
   char c;
   
@@ -22,20 +23,24 @@ void fill(code a, const char* str)
     }
     else
     {
-      return;
+      return false;
     }
   }
+  
+  return true;
 }
 
-void stringify(const code a, char* str)
+bool stringify(const code a, char* str)
 {
   if (strlen(str) < 4)
   {
-    return;
+    return false;
   }
   
   for (int i = 0; i < 4; i++)
   {
     str[i] = ((char) a[i]) + 'A';
   }
+  
+  return true;
 }

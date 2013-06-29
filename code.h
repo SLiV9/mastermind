@@ -9,7 +9,7 @@ typedef unsigned int score;
 #define exacts(s) ((s) / 4)
 #define abouts(s) ((s) % 4)
 
-void fill(code a, const char* str);
-void stringify(const code a, char* str);
+bool fill(code a, const char* str);
+bool stringify(const code a, char* str);
 
 score evaluate(const code attempt, const code master);
