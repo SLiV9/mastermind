@@ -9,10 +9,10 @@
 P = main play
 
 # object files
-OB = code.o main.o play.o
-O1 = code.o
+O1 = code.o randy.o ai.o
 OM = main.o $(O1)
 OP = play.o $(O1)
+OB = main.o play.o $(O1)
 
 # flags
 CFLAGS = -std=gnu99 -Wall
@@ -34,6 +34,12 @@ play.o: play.c
 	
 code.o: code.c evaluate.c
 	gcc -c $(CFLAGS) code.c
+	
+ai.o: ai.c
+	gcc -c $(CFLAGS) ai.c
+	
+randy.o: randy.c
+	gcc -c $(CFLAGS) randy.c
 
 # clean
 clean:
