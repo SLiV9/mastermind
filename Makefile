@@ -9,19 +9,22 @@
 P = main
 
 # object files
-O1 = main.o
+O1 = main.o code.o
 
 # flags
 CFLAGS = -std=gnu99 -Wall
 LFLAGS = 
 
 # make
-main: main.o
+main: $(O1)
 	gcc $(O1) -o $(P) $(LFLAGS)
 
 # make object files
 main.o: main.c
 	gcc -c $(CFLAGS) main.c
+	
+code.o: code.c
+	gcc -c $(CFLAGS) code.c
 
 # clean
 clean:
