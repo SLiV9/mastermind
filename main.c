@@ -8,9 +8,9 @@ int main(int argc, char** argv)
 {
     printf("[ Mastermind ]\n\n\n");
     
-    code master;
+    code attempt, master;
     
-    fill(master, "abce");
+    fill(master, "dddb");
     
     if (contains(master, D))
     {
@@ -24,6 +24,12 @@ int main(int argc, char** argv)
     char str[5] = "1234";
     stringify(master, str);
     printf("The master code is: %s.\n", str);
+    
+    fill(attempt, "ddcc");
+    stringify(attempt, str);
+    score S = evaluate(attempt, master);
+    printf("Attempting: %s.\nResult: %d exact, %d about.\n", str, exacts(S), 
+        abouts(S));
     
     printf("\n\n[ done ]\n");
 

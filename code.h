@@ -1,9 +1,15 @@
-typedef enum { A, B, C, D, E, F } digit;
-
+typedef enum { A, B, C, D, E, F, X } digit;
 typedef digit code[4];
 
 #define contains_(a,d) (a[0] == d || a[1] == d || a[2] == d || a[3] == d)
 #define contains(a,d) (contains_((a),(d)))
 
-void fill(code a, char* str);
-void stringify(code a, char* str);
+typedef unsigned int score;
+
+#define exacts(s) ((s) / 4)
+#define abouts(s) ((s) % 4)
+
+void fill(code a, const char* str);
+void stringify(const code a, char* str);
+
+score evaluate(const code attempt, const code master);

@@ -23,7 +23,7 @@ main: $(O1)
 main.o: main.c
 	gcc -c $(CFLAGS) main.c
 	
-code.o: code.c
+code.o: code.c evaluate.c
 	gcc -c $(CFLAGS) code.c
 
 # clean

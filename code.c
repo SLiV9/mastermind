@@ -2,7 +2,9 @@
 
 #include "code.h"
 
-void fill(code a, char* str)
+#include "evaluate.c"
+
+void fill(code a, const char* str)
 {
   char c;
   
@@ -25,7 +27,7 @@ void fill(code a, char* str)
   }
 }
 
-void stringify(code a, char* str)
+void stringify(const code a, char* str)
 {
   if (strlen(str) < 4)
   {
