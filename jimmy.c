@@ -14,12 +14,7 @@ void init_random_dlist()
 {
   start_dlist();
   
-  for (int i = 0; i < DEXES; i++)
-  {
-    order[i] = rand();
-  }
-  
-  sort_dlist();
+  shuffle_dlist();
   
   jimmy = 0;
 }
