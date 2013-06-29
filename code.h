@@ -17,6 +17,3 @@ bool fill(code a, const char* str);
 bool stringify(const code a, char* str);
 
 score evaluate(const code attempt, const code master);
-
-dex dlist[DEXES];
-int order[DEXES];

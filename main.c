@@ -7,7 +7,7 @@
 #include "code.h"
 #include "ai.h"
 
-bool run(AI ai, bool verbose);
+bool run(const AI ai, const bool verbose);
 
 int main(int argc, char** argv)
 {
@@ -18,14 +18,28 @@ int main(int argc, char** argv)
     
     ai_setup();
     
-    run(RANDY, false);
+    unsigned int tries = 1000000;
+    unsigned int successes;
+    
+    for (int ai = 0; ai < N_AI; ai++)
+    {
+      successes = 0;
+      printf("It's now %s's turn.\n", ai_name[ai]);
+      
+      for (int t = 0; t < tries; t++)
+      {
+        successes += (run(ai, false));
+      }
+    
+      printf("%s's success rate: %d / %d.\n", ai_name[ai], successes, tries); 
+    }
     
     printf("\n\n[ done ]\n");
 
     return 0;
 }
 
-bool run(AI ai, bool verbose)
+bool run(const AI ai, const bool verbose)
 {
   if (! ai_name[ai])
   {
