@@ -7,19 +7,7 @@
 #include "code.h"
 #include "ai.h"
 
-void init_randy()
+void random_guess(code attempt)
 {
-  srand(time(NULL));
-}
-
-void guess_randy(code attempt)
-{
-}
-
-void reward_randy(score S)
-{
-}
-
-void end_randy()
-{
+  codex(attempt, rand() % DEXES);
 }

@@ -8,11 +8,27 @@
 #include "ai.h"
 #include "randy.h"
 
+void empty_init()
+{
+}
+
+void empty_guess(code attempt)
+{
+}
+
+void empty_reward(score S)
+{
+}
+
+void empty_end()
+{
+}
+
 void ai_setup()
 {
   ai_name[RANDY] = "Randy";
-  init[RANDY] = init_randy;
-  guess[RANDY] = guess_randy;
-  reward[RANDY] = reward_randy;
-  end[RANDY] = end_randy;
+  init[RANDY] = empty_init;
+  guess[RANDY] = random_guess;
+  reward[RANDY] = empty_reward;
+  end[RANDY] = empty_end;
 }

@@ -5,6 +5,20 @@
 
 #include "evaluate.c"
 
+bool codex(code a, dex j)
+{
+  if (j >= DEXES)
+    return false;
+    
+  for (int i = 0; i < 4; i++)
+  {
+    a[i] = j % 6;
+    j /= 6;
+  }
+    
+  return true;
+}
+
 bool fill(code a, const char* str)
 {
   char c;

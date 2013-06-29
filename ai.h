@@ -10,4 +10,8 @@ guess_func guess[N_AI];
 reward_func reward[N_AI];
 end_func end[N_AI];
 
+/* Call this before using any AI. */
+void ai_setup();
+
+/* Check (ai_name[ai]) before using an AI. */
 char* ai_name[N_AI];

@@ -5,11 +5,18 @@ typedef digit code[4];
 #define contains(a,d) (contains_((a),(d)))
 
 typedef unsigned int score;
+typedef unsigned int dex;
+
+#define DEXES 1296
 
 #define exacts(s) ((s) / 4)
 #define abouts(s) ((s) % 4)
 
+bool codex(code a, dex j);
 bool fill(code a, const char* str);
 bool stringify(const code a, char* str);
 
 score evaluate(const code attempt, const code master);
+
+dex dlist[DEXES];
+int order[DEXES];

@@ -10,17 +10,11 @@ int main(int argc, char** argv)
 {
     printf("[ Mastermind ]\n\n\n");
     
-    /* Seed the random number generater. */
+    /* Seed the random number generator. */
     srand(time(NULL));
     
     code attempt, master;
-    for (int i = 0; i < 4; i++)
-    {
-      master[i] = (digit) (rand() % 6);
-    }
-    //char masterstring[5] = "1234";
-    //stringify(master, masterstring);
-    //printf("{ %s }\n", masterstring);
+    codex(master, rand() % DEXES);
     
     char input[80] = "1234X";
     int turn;

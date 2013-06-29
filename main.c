@@ -2,37 +2,80 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
 #include "code.h"
+#include "ai.h"
+
+bool run(AI ai, bool verbose);
 
 int main(int argc, char** argv)
 {
     printf("[ Mastermind ]\n\n\n");
     
-    code attempt, master;
+    /* Seed the random number generator. */
+    srand(time(NULL));
     
-    fill(master, "dddb");
+    ai_setup();
     
-    if (contains(master, D))
-    {
-      printf("The master code contains the letter D.\n");
-    }
-    if (contains(master, E))
-    {
-      printf("The master code contains the letter E.\n");
-    }
-    
-    char str[5] = "1234";
-    stringify(master, str);
-    printf("The master code is: %s.\n", str);
-    
-    fill(attempt, "ddcc");
-    stringify(attempt, str);
-    score S = evaluate(attempt, master);
-    printf("Attempting: %s.\nResult: %d exact, %d about.\n", str, exacts(S), 
-        abouts(S));
+    run(RANDY, false);
     
     printf("\n\n[ done ]\n");
 
     return 0;
+}
+
+bool run(AI ai, bool verbose)
+{
+  if (! ai_name[ai])
+  {
+    printf("AI %d is not initialised.\n", ai);
+    printf("\n< aborted >\n");
+    exit(-1);
+  }
+  
+  code attempt, master;
+  int turn;
+  score S = 0;
+  char str[5];
+  
+  codex(master, rand() % DEXES);
+  
+  init[ai]();
+  
+  for (turn = 1; turn <= 8; turn++)
+  {
+    guess[ai](attempt);
+    if (verbose)
+    {
+      stringify(attempt, str);
+      printf("%s: %s\n", ai_name[ai], str);
+    }
+    
+    S = evaluate(attempt, master);
+    
+    if (S == 16)
+    {
+      if (verbose)
+      {
+        printf("->\t\tCorrect!\n");
+      }
+      break;
+    }
+    else if (verbose)
+    {
+      reward[ai](S);
+      
+      printf("->\t\t[ %d exact, %d about ]\n", exacts(S), abouts(S));
+    }
+    
+    if (verbose)
+    {
+      printf("\n");
+    }
+  }
+  
+  end[ai]();
+  
+  return (S == 16);
 }
