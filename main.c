@@ -37,6 +37,11 @@ int main(int argc, char** argv)
       printf("%s's success rate: %d / %d.\n", ai_name[ai], successes, tries); 
     }
     
+    int ai = PHILIP;
+    printf("Special test: %s.\n", ai_name[ai]);
+    
+    run(ai, true);
+    
     printf("\n\n[ done ]\n");
 
     return 0;
@@ -54,7 +59,7 @@ bool run(const AI ai, const bool verbose)
   code attempt, master;
   int turn;
   score S = 0;
-  char str[5];
+  char str[5] = "1234";
   
   codex(master, rand() % DEXES);
   

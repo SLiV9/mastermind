@@ -53,7 +53,18 @@ bool stringify(const code a, char* str)
   
   for (int i = 0; i < 4; i++)
   {
-    str[i] = ((char) a[i]) + 'A';
+    if (a[i] >= A && a[i] <= F)
+    {
+      str[i] = ((char) (a[i] - A)) + 'A';
+    }
+    else if (a[i] == X)
+    {
+      str[i] = 'X';
+    }
+    else
+    {
+      str[i] = '$';
+    }
   }
   
   return true;
