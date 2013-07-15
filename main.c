@@ -31,16 +31,12 @@ int main(int argc, char** argv)
       
       for (int t = 0; t < tries; t++)
       {
-        successes += (run(ai, false));
+        if (run(ai, false))
+          successes++;
       }
     
       printf("%s's success rate: %d / %d.\n", ai_name[ai], successes, tries); 
     }
-    
-    int ai = PHILIP;
-    printf("Special test: %s.\n", ai_name[ai]);
-    
-    run(ai, true);
     
     printf("\n\n[ done ]\n");
 
@@ -84,11 +80,14 @@ bool run(const AI ai, const bool verbose)
       }
       break;
     }
-    else if (verbose)
+    else
     {
-      reward[ai](S);
+      if (verbose)
+      {
+        printf("->\t\t[ %d exact, %d about ]\n", exacts(S), abouts(S));
+      }
       
-      printf("->\t\t[ %d exact, %d about ]\n", exacts(S), abouts(S));
+      reward[ai](S);
     }
     
     if (verbose)
