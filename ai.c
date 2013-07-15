@@ -6,6 +6,7 @@
 
 #include "code.h"
 #include "ai.h"
+#include "dlist.h"
 
 void empty_init()
 {
@@ -36,4 +37,10 @@ void ai_setup()
   guess[JIMMY] = random_listed_guess;
   reward[JIMMY] = empty_reward;
   end[JIMMY] = empty_end;
+  
+  ai_name[PHILIP] = "Philip";
+  init[PHILIP] = start_dlist;
+  guess[PHILIP] = next_guess;
+  reward[PHILIP] = filter_evalscore;
+  end[PHILIP] = empty_end;
 }

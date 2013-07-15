@@ -23,6 +23,9 @@ int main(int argc, char** argv)
     
     for (int ai = 0; ai < N_AI; ai++)
     {
+      if (ai == JIMMY)
+        continue;
+        
       successes = 0;
       printf("It's now %s's turn.\n", ai_name[ai]);
       

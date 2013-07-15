@@ -9,7 +9,7 @@
 P = main play
 
 # object files
-O1 = code.o dlist.o ai.o randy.o jimmy.o
+O1 = code.o dlist.o ai.o randy.o jimmy.o philip.o
 OM = main.o $(O1)
 OP = play.o $(O1)
 OB = main.o play.o $(O1)
@@ -45,6 +45,8 @@ randy.o: randy.c
 	gcc -c $(CFLAGS) randy.c
 jimmy.o: jimmy.c
 	gcc -c $(CFLAGS) jimmy.c
+philip.o: philip.c
+	gcc -c $(CFLAGS) philip.c
 
 # clean
 clean:

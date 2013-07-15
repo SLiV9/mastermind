@@ -1,4 +1,4 @@
-typedef enum { RANDY, JIMMY, N_AI } AI;
+typedef enum { RANDY, JIMMY, PHILIP, N_AI } AI;
 
 typedef void (*init_func)();
 typedef void (*guess_func)(code attempt);
@@ -22,3 +22,7 @@ void random_guess(code attempt);
 /* Jimmy */
 void init_random_dlist();
 void random_listed_guess(code attempt);
+
+/* Philip */
+void next_guess(code attempt);
+void filter_evalscore(score S);
